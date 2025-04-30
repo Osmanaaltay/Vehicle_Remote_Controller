@@ -1,0 +1,43 @@
+[PROJECT]
+Target=all_buttons.hex
+Processor_Text=PIC12F629
+CCSVerions=5.112
+Compiler=PCM
+CCSVersion=5.112
+[Target Data]
+FileList=all_buttons.c
+[Directories]
+Include=
+[C:\Users\osman\OneDrive\Masaüstü\all_buttons_active\all_buttons]
+Type=4
+[mru-list]
+1=all_buttons.c
+
+[fileformats]
+forcecoff=0
+
+[ProjectLog]
+Days=1
+D1=30-04-2025
+D1_L=8
+D1_L1=[58132]Project Opened.
+D1_L2=[58134]Project Closed.
+D1_L3=[58182]Project Opened.
+D1_L4=[58217]Project Closed.
+D1_L5=[58414]Project Opened.
+D1_L6=[58425]Project Closed.
+D1_L7=[61115]Project Opened.
+D1_L8=[61860]Project Closed.
+
+[Opened Files]
+1=all_buttons.c
+t1=5
+Count=1
+[all_buttons.c]
+Type=4
+
+[defines]
+buildcount=2
+[Units]
+Count=1
+1=all_buttons (main)

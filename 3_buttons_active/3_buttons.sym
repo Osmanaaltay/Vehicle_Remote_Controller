@@ -1,0 +1,58 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+019.6   C1OUT
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+024     veri1
+025     veri2
+026     veri3
+027     dly
+028.0   main.buton1
+028.1   main.buton2
+028.2   main.buton3
+029     @delay_ms1.P1
+029     @PUTCHAR_1_.P2
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+00000A  @delay_ms1
+00001E  @PUTCHAR_1_
+000040  main
+000040  @cinit1
+000051  @cinit2
+
+Project Directory:
+    C:\Users\osman\OneDrive\Masaüstü\3_buttons_active\
+
+Project Files:
+    3_buttons.c                                             [30-Nis-25 16:11  CRC=D6268E59]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\12F629.h [21-Eki-22 11:01  CRC=E7949DFB]
+
+Source signature=A54FCA4F
+Program memory checksum=0000
+Hex file CRC=D586
+
+Units:
+    C:\Users\osman\OneDrive\Masaüstü\3_buttons_active\3_buttons (main)
+
+Compiler Settings:
+    Processor:      PIC12F629
+    Pointer Size:   8
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   3_buttons.xsym
+    Errors:      3_buttons.err
+    Ext Symbols: 3_buttons.esym
+    INHX8:       3_buttons.hex
+    Symbols:     3_buttons.sym
+    List:        3_buttons.lst
+    Debug/COFF:  3_buttons.cof
+    Project:     3_buttons.ccspjt
+    Call Tree:   3_buttons.tre
+    Statistics:  3_buttons.STA

@@ -1,0 +1,243 @@
+CCS PCM C Compiler, Version 5.112, 5967               30-Nis-25 16:11
+
+               Filename:   C:\Users\osman\OneDrive\Masaüstü\3_buttons_active\3_buttons.lst
+
+               ROM used:   167 words (16%)
+                           Largest free fragment is 857
+               RAM used:   9 (14%) at main() level
+                           10 (16%) worst case
+               Stack used: 1 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+0004:  CALL   3FF
+0005:  BSF    03.5
+0006:  MOVWF  10
+0007:  MOVLW  00
+0008:  MOVWF  0A
+0009:  GOTO   040
+.................... #include <12F629.h>
+.................... //////////// Standard Header file for the PIC12F629 device ////////////////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... ////        (C) Copyright 1996, 2020 Custom Computer Services          ////
+.................... //// This source code may only be used by licensed users of the CCS C  ////
+.................... //// compiler.  This source code may only be distributed to other      ////
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction ////
+.................... //// or distribution is permitted without written permission.          ////
+.................... //// Derivative programs created using this software in object code    ////
+.................... //// form are not restricted in any way.                               ////
+.................... ///////////////////////////////////////////////////////////////////////////
+.................... #device PIC12F629
+.................... 
+.................... #list
+.................... 
+.................... #fuses INTRC_IO, NOWDT, NOMCLR
+.................... #use delay(clock=4000000)
+000A:  MOVLW  29
+000B:  MOVWF  04
+000C:  MOVF   00,W
+000D:  BTFSC  03.2
+000E:  GOTO   01D
+000F:  MOVLW  01
+0010:  MOVWF  21
+0011:  CLRF   20
+0012:  DECFSZ 20,F
+0013:  GOTO   012
+0014:  DECFSZ 21,F
+0015:  GOTO   011
+0016:  MOVLW  4A
+0017:  MOVWF  20
+0018:  DECFSZ 20,F
+0019:  GOTO   018
+001A:  GOTO   01B
+001B:  DECFSZ 00,F
+001C:  GOTO   00F
+001D:  RETURN
+.................... 
+.................... // UART: sadece TX, 9600 baud
+.................... #use rs232(baud=9600, xmit=PIN_A4, bits=8, parity=N, stop=1)
+001E:  BSF    03.5
+001F:  BCF    05.4
+0020:  BCF    03.5
+0021:  BCF    05.4
+0022:  MOVLW  08
+0023:  MOVWF  21
+0024:  GOTO   025
+0025:  NOP
+0026:  BSF    21.7
+0027:  GOTO   036
+0028:  BCF    21.7
+0029:  RRF    29,F
+002A:  BTFSC  03.0
+002B:  BSF    05.4
+002C:  BTFSS  03.0
+002D:  BCF    05.4
+002E:  BSF    21.6
+002F:  GOTO   036
+0030:  BCF    21.6
+0031:  DECFSZ 21,F
+0032:  GOTO   029
+0033:  GOTO   034
+0034:  NOP
+0035:  BSF    05.4
+0036:  MOVLW  1C
+0037:  MOVWF  04
+0038:  DECFSZ 04,F
+0039:  GOTO   038
+003A:  GOTO   03B
+003B:  BTFSC  21.7
+003C:  GOTO   028
+003D:  BTFSC  21.6
+003E:  GOTO   030
+003F:  RETURN
+.................... 
+.................... int8 veri1 = 0xA5;
+.................... int8 veri2 = 0x3C;
+.................... int8 veri3 = 0x7E;
+.................... int8 dly=200;
+.................... void main() {
+0040:  MOVF   03,W
+0041:  ANDLW  1F
+0042:  MOVWF  03
+0043:  BSF    03.5
+0044:  BCF    05.4
+0045:  BCF    03.5
+0046:  BSF    05.4
+0047:  MOVLW  A5
+0048:  MOVWF  24
+0049:  MOVLW  3C
+004A:  MOVWF  25
+004B:  MOVLW  7E
+004C:  MOVWF  26
+004D:  MOVLW  C8
+004E:  MOVWF  27
+004F:  MOVLW  07
+0050:  MOVWF  19
+....................    set_tris_a(0b11101111); // GP3, GP1, GP0 giriþ; GP4 (TX), GP2 (LED) çýkýþ
+0051:  MOVLW  EF
+0052:  BSF    03.5
+0053:  MOVWF  05
+.................... 
+....................    output_high(PIN_A4);     // UART TX hattýný IDLE'a çek
+0054:  BCF    05.4
+0055:  BCF    03.5
+0056:  BSF    05.4
+....................    output_low(PIN_A2);      // LED baþlangýçta kapalý
+0057:  BSF    03.5
+0058:  BCF    05.2
+0059:  BCF    03.5
+005A:  BCF    05.2
+.................... 
+....................    delay_ms(dly);           // Baþlangýç gecikmesi
+005B:  MOVF   27,W
+005C:  MOVWF  29
+005D:  CALL   00A
+.................... 
+....................    while(TRUE) {
+....................       int1 buton1 = input(PIN_A3); // GP3 - pin 4
+....................       int1 buton2 = input(PIN_A1); // GP1 - pin 6
+....................       int1 buton3 = input(PIN_A0); // GP0 - pin 7
+005E:  BSF    03.5
+005F:  BSF    05.3
+0060:  BCF    03.5
+0061:  BCF    28.0
+0062:  BTFSC  05.3
+0063:  BSF    28.0
+0064:  BSF    03.5
+0065:  BSF    05.1
+0066:  BCF    03.5
+0067:  BCF    28.1
+0068:  BTFSC  05.1
+0069:  BSF    28.1
+006A:  BSF    03.5
+006B:  BSF    05.0
+006C:  BCF    03.5
+006D:  BCF    28.2
+006E:  BTFSC  05.0
+006F:  BSF    28.2
+.................... 
+....................       if (buton1) {
+0070:  BTFSS  28.0
+0071:  GOTO   081
+....................          putc(veri1);
+0072:  MOVF   24,W
+0073:  MOVWF  29
+0074:  CALL   01E
+....................          output_high(PIN_A2);
+0075:  BSF    03.5
+0076:  BCF    05.2
+0077:  BCF    03.5
+0078:  BSF    05.2
+....................          delay_ms(dly);
+0079:  MOVF   27,W
+007A:  MOVWF  29
+007B:  CALL   00A
+....................          output_low(PIN_A2);
+007C:  BSF    03.5
+007D:  BCF    05.2
+007E:  BCF    03.5
+007F:  BCF    05.2
+....................       }
+0080:  GOTO   0A2
+....................       else if (buton2) {
+0081:  BTFSS  28.1
+0082:  GOTO   092
+....................          putc(veri2);
+0083:  MOVF   25,W
+0084:  MOVWF  29
+0085:  CALL   01E
+....................          output_high(PIN_A2);
+0086:  BSF    03.5
+0087:  BCF    05.2
+0088:  BCF    03.5
+0089:  BSF    05.2
+....................          delay_ms(dly);
+008A:  MOVF   27,W
+008B:  MOVWF  29
+008C:  CALL   00A
+....................          output_low(PIN_A2);
+008D:  BSF    03.5
+008E:  BCF    05.2
+008F:  BCF    03.5
+0090:  BCF    05.2
+....................       }
+0091:  GOTO   0A2
+....................       else if (buton3) {
+0092:  BTFSS  28.2
+0093:  GOTO   0A2
+....................          putc(veri3);
+0094:  MOVF   26,W
+0095:  MOVWF  29
+0096:  CALL   01E
+....................          output_high(PIN_A2);
+0097:  BSF    03.5
+0098:  BCF    05.2
+0099:  BCF    03.5
+009A:  BSF    05.2
+....................          delay_ms(dly);
+009B:  MOVF   27,W
+009C:  MOVWF  29
+009D:  CALL   00A
+....................          output_low(PIN_A2);
+009E:  BSF    03.5
+009F:  BCF    05.2
+00A0:  BCF    03.5
+00A1:  BCF    05.2
+....................       }
+.................... 
+....................       delay_ms(10); // Döngü beklemesi
+00A2:  MOVLW  0A
+00A3:  MOVWF  29
+00A4:  CALL   00A
+00A5:  GOTO   05E
+....................    }
+.................... }
+.................... 
+00A6:  SLEEP
+
+Configuration Fuses:
+   Word  1: 31C4   INTRC_IO NOWDT PUT NOMCLR BROWNOUT NOPROTECT NOCPD

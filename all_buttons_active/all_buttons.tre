@@ -1,0 +1,15 @@
+읕all_buttons
+   읕MAIN  0/107  Ram=0
+      쳐@cinit1  (Inline)  Ram=0
+      쳐@cinit2  (Inline)  Ram=0
+      쳐@delay_ms1  0/20  Ram=1
+      쳐debounce_buttons  0/67  Ram=2
+      쳐@PUTCHAR_1_  0/34  Ram=1
+      쳐@delay_ms1  0/20  Ram=1
+      쳐@PUTCHAR_1_  0/34  Ram=1
+      쳐@delay_ms1  0/20  Ram=1
+      쳐@PUTCHAR_1_  0/34  Ram=1
+      쳐@delay_ms1  0/20  Ram=1
+      쳐@PUTCHAR_1_  0/34  Ram=1
+      쳐@delay_ms1  0/20  Ram=1
+      읕@delay_ms1  0/20  Ram=1

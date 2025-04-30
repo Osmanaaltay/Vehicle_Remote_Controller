@@ -1,0 +1,66 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+019.6   C1OUT
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+024     veri1
+025     veri2
+026     veri3
+027     veri4
+028.0   stable1
+028.1   stable2
+028.2   stable3
+029     counter1
+02A     counter2
+02B     counter3
+02C     @PUTCHAR_1_.P1
+02C     @delay_ms1.P2
+02C.0   debounce_buttons.raw1
+02C.1   debounce_buttons.raw2
+02C.2   debounce_buttons.raw3
+02D     debounce_buttons.@SCRATCH1
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+00000A  @delay_ms1
+00001E  debounce_buttons
+000061  @PUTCHAR_1_
+000083  MAIN
+000083  @cinit1
+00009A  @cinit2
+
+Project Directory:
+    C:\Users\osman\OneDrive\Masaüstü\Remote_Control\all_buttons_active\
+
+Project Files:
+    all_buttons.c                                           [30-Nis-25 16:11  CRC=27FA1C7E]
+    ..\..\..\..\..\..\Program Files (x86)\PICC\Devices\12F629.h [21-Eki-22 11:01  CRC=E7949DFB]
+
+Source signature=F7235874
+Program memory checksum=0000
+Hex file CRC=2C6E
+
+Units:
+    C:\Users\osman\OneDrive\Masaüstü\Remote_Control\all_buttons_active\all_buttons (main)
+
+Compiler Settings:
+    Processor:      PIC12F629
+    Pointer Size:   8
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   all_buttons.xsym
+    Errors:      all_buttons.err
+    Ext Symbols: all_buttons.esym
+    INHX8:       all_buttons.hex
+    Symbols:     all_buttons.sym
+    List:        all_buttons.lst
+    Debug/COFF:  all_buttons.cof
+    Project:     all_buttons.ccspjt
+    Call Tree:   all_buttons.tre
+    Statistics:  all_buttons.STA
